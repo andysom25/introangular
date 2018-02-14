@@ -12,7 +12,7 @@ import { StorageService } from '../core/storage-service';
 export class PayeesListComponent implements OnInit {
   @Input()
 
-  payees: Observable<Payee[]>;
+  payees: Payee[];
   displayPayees: Payee[];
 
   @Output()
@@ -24,13 +24,13 @@ export class PayeesListComponent implements OnInit {
   constructor(private storage: StorageService) { }
 
   ngOnInit() {
-    this.payees.subscribe(
-      payees => this.displayPayees = payees,
-      err => {
-        console.log('PayeesList had an error: ', err);
-        this.displayPayees = null;
-      }
-    );
+    // this.payees.subscribe(
+    //   payees => this.displayPayees = payees,
+    //   err => {
+    //     console.log('PayeesList had an error: ', err);
+    //     this.displayPayees = null;
+    //   }
+    // );
   }
 
   handleSort(sortField: string) {

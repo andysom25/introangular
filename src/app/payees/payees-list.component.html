@@ -4,11 +4,11 @@
       <th (click)="handleSort('payeeName')">Payee Name</th>
       <th (click)="handleSort('city')">City</th>
       <th (click)="handleSort('state')">State</th>
-      <th (click)="handleSort('payee.category.categoryName')">Category</th>
+      <th (click)="handleSort('category.categoryName')">Category</th>
     </tr>
   </thead>
-  <tbody *ngIf="displayPayees; else errorBlock">
-    <tr *ngFor="let payee of displayPayees"
+  <tbody *ngIf="payees; else errorBlock">
+    <tr *ngFor="let payee of payees"
     (click)="handleClick(payee)">
       <td>{{ payee.payeeName}}</td>
       <td>{{ payee.city }}</td>

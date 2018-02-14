@@ -1,6 +1,6 @@
 <h3>Payees Manager</h3>
 <section>
-<payees-list [payees]="asyncPayees"
+<payees-list [payees]="payees"
 (sortPayee)= "handleSortPayee($event)"
 (selectPayee)="handleSelectPayee($event)"></payees-list>
 </section>
