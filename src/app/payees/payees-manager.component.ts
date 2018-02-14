@@ -42,7 +42,7 @@ constructor(public dao: PayeesDaoService) { }
   }
 
   handleSortPayee(sortField) {
-    console.log('You want to sort on ', sortField);
+    console.log('You want to sort on: ', sortField);
 
     if (this.sortField === sortField) {
       this.payees.reverse();
