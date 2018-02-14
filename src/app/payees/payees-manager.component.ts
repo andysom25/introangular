@@ -38,6 +38,10 @@ constructor(public dao: PayeesDaoService) { }
   console.log('You selected', payee.payeeName);
   }
 
+  handleSortPayee(sortField) {
+    console.log('You want to sort on ', sortField);
+  }
+
   handleError(err) {
     console.log('PayeesManager.handleError()', err);
 

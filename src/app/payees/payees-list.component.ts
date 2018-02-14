@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {Payee} from './Payee';
 import { Observable } from 'rxjs/Observable';
+import { StorageService } from '../core/storage-service';
+
+
 @Component({
   selector: 'payees-list',
   templateUrl: './payees-list.component.html',
@@ -15,7 +18,10 @@ export class PayeesListComponent implements OnInit {
   @Output()
   selectPayee = new EventEmitter<Payee>();
 
-  constructor() { }
+  @Output()
+  sortPayee = new EventEmitter<string>();
+
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
     this.payees.subscribe(
@@ -25,6 +31,10 @@ export class PayeesListComponent implements OnInit {
         this.displayPayees = null;
       }
     );
+  }
+
+  handleSort(sortField: string) {
+  this.sortPayee.emit(sortField);
   }
 
   handleClick(payee) {

@@ -1,10 +1,10 @@
 <table class ="table table-striped">
   <thead>
     <tr>
-      <th>Payee Name</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Category</th>
+      <th (click)="handleSort('payee.payeename')">Payee Name</th>
+      <th (click)="handleSort('city')">City</th>
+      <th (click)="handleSort('state')">State</th>
+      <th (click)="handleSort('category.categoryname')">Category</th>
     </tr>
   </thead>
   <tbody *ngIf="displayPayees; else errorBlock">

@@ -1,3 +1,5 @@
+
+<P> there are {{ transactions?.length }} transactions</P>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -7,10 +9,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let t of tx">
-      <td>{{ t.payee.payeeName.toString().toUpperCase() }}</td>
-      <td>{{ t.category.categoryName.toUpperCase() }}</td>
-      <td>{{ t.amount.toPrecision(9) }}</td>
+    <tr *ngFor="let tx of transactions">
+      <td>{{ tx.payee.payeeName.toString().toUpperCase() }}</td>
+      <td>{{ tx.category.categoryName.toUpperCase() }}</td>
+      <td>{{ tx.amount.toPrecision(9) }}</td>
     </tr>
   </tbody>
 </table>
+
+
+<ng-template #errorBlock>
+    <tbody>
+      <tr>
+        <td colspan="4">No Records Found</td>
+      </tr>
+    </tbody>
+    </ng-template>

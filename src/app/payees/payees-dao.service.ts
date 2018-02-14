@@ -23,7 +23,7 @@ handleError(httpError) {
 if (httpError.status === 404) {
   return Observable.throw({
     code: 404,
-    message: 'No Results Found'
+    message: 'No Results Found!'
 
   });
 } else if (httpError.status >= 500) {
@@ -35,7 +35,7 @@ if (httpError.status === 404) {
 } else {
   return Observable.throw({
   status: httpError.status,
-  message: 'Your guess is as good as mine'
+  message: 'Your guess is as good as mine!'
   });
 
 
