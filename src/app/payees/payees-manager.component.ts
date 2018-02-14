@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
+import _sortBy from 'lodash-es/sortBy';
 
 @Component({
   selector: 'payees-manager',
@@ -32,6 +33,7 @@ constructor(public dao: PayeesDaoService) { }
     //   return Observable.of([]);
     // });
     this.asyncPayees = this.dao.list();
+    this.asyncPayees.subscribe( payees => this.payees = payees);
   }
 
   handleSelectPayee(payee) {
@@ -40,6 +42,7 @@ constructor(public dao: PayeesDaoService) { }
 
   handleSortPayee(sortField) {
     console.log('You want to sort on ', sortField);
+    this.payees = _sortBy(this.payees, sortField);
   }
 
   handleError(err) {

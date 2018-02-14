@@ -6,6 +6,11 @@ export interface Payee {
     state?: string;
     zip?: string;
     categoryId: string | number;
+    category?: {
+        id: string | number;
+        categoryName: string;
+        categoryType: string;
+    };
     image?: string;
     motto?: string;
     active: boolean;
