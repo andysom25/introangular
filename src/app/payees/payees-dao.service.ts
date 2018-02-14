@@ -29,7 +29,7 @@ if (httpError.status === 404) {
 } else if (httpError.status >= 500) {
   return Observable.throw({
     status : httpError.status,
-    message: 'REST Server Malfunction'
+    message: 'REST Server Malfunction!'
 
   });
 } else {
