@@ -17,6 +17,7 @@ export class PayeesManagerComponent implements OnInit {
 
 payees: Payee[];
 asyncPayees: Observable<Payee[]>;
+sortField: string;
 
 constructor(public dao: PayeesDaoService) { }
 
@@ -42,7 +43,13 @@ constructor(public dao: PayeesDaoService) { }
 
   handleSortPayee(sortField) {
     console.log('You want to sort on ', sortField);
-    this.payees = _sortBy(this.payees, sortField);
+
+    if (this.sortField === sortField) {
+      this.payees.reverse();
+    } else {
+      this.payees = _sortBy(this.payees, sortField);
+    }
+    this.sortField = sortField;
   }
 
   handleError(err) {

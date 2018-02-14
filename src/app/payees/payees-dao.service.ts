@@ -15,7 +15,7 @@ constructor(private http: HttpClient) {}
 
 
 list(): Observable<Payee[]> {
-return this.http.get<Payee[]>(this.baseUrl,{
+return this.http.get<Payee[]>(this.baseUrl, {
   params: {'_expand': 'category'}}
 ).
 catch(this.handleError);
