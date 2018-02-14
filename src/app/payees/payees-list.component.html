@@ -1,0 +1,29 @@
+<table class ="table table-striped">
+  <thead>
+    <tr>
+      <th>Payee Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="displayPayees; else errorBlock">
+    <tr *ngFor="let payee of displayPayees"
+    (click)="handleClick(payee)">
+      <td>{{ payee.payeeName}}</td>
+      <td>{{ payee.city }}</td>
+      <td>{{ payee.state }}</td>
+      <td>{{ payee.categoryId }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #errorBlock>
+<tbody>
+  <tr>
+    <td colspan="4">No Records Found</td>
+  </tr>
+</tbody>
+</ng-template>
+
+<!-- "let payee of payees | async" -->

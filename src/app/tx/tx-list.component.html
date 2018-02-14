@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Payee</th>
+      <th>Cateogry</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of tx">
+      <td>{{ t.payee.payeeName.toString().toUpperCase() }}</td>
+      <td>{{ t.category.categoryName.toUpperCase() }}</td>
+      <td>{{ t.amount.toPrecision(9) }}</td>
+    </tr>
+  </tbody>
+</table>
