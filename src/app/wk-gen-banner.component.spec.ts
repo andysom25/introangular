@@ -38,5 +38,19 @@ it('should display the default company with no arguments', () => {
   expect(fixture.nativeElement.querySelector('h3').innerHTML).toMatch(/Default Company/);
   expect(fixture.nativeElement.querySelector('*:not(h3)').innerHTML).not.toMatch(/Default Company/);
 });
+
+it('should reflect changes', () => {
+
+const defaultCompany = component.companyName;
+const newCompany = 'Wolters Kluwer';
+
+expect(fixture.nativeElement.querySelector('h3').innerHTML).toContain(defaultCompany);
+
+component.companyName = newCompany;
+fixture.detectChanges();
+expect(fixture.nativeElement.querySelector('h3').innerHTML).toContain(newCompany);
+
+});
+
 });
 
