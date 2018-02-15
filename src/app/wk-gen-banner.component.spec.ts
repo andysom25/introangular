@@ -5,6 +5,8 @@ import { WkGenBannerComponent } from './wk-gen-banner.component';
 describe('WkGenBannerComponent', () => {
   let component: WkGenBannerComponent;
   let fixture: ComponentFixture<WkGenBannerComponent>;
+  let spy: any;
+  const fakenow = 15000000;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -14,6 +16,8 @@ describe('WkGenBannerComponent', () => {
   }));
 
   beforeEach(() => {
+    spy = spyOn(Date, 'now');
+    spy.and.returnValue(fakenow);
     fixture = TestBed.createComponent(WkGenBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,6 +25,10 @@ describe('WkGenBannerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should us the fake now', () => {
+    expect(component.today).toEqual(fakenow);
   });
 
 it('should display the default company with no arguments', () => {
@@ -31,3 +39,4 @@ it('should display the default company with no arguments', () => {
   expect(fixture.nativeElement.querySelector('*:not(h3)').innerHTML).not.toMatch(/Default Company/);
 });
 });
+

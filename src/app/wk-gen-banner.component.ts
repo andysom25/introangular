@@ -9,8 +9,7 @@ export class WkGenBannerComponent implements OnInit {
 
   @Input()
   companyName = 'Default Company';
-  today = new Date();
-
+  today = Date.now();
   constructor() { }
 
   ngOnInit() {
