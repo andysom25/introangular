@@ -7,6 +7,7 @@ import { WkGenBannerComponent } from './wk-gen-banner.component';
 import { TxModule } from './tx/tx.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     PayeesModule,
     TxModule,
     SharedModule,

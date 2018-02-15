@@ -7,12 +7,14 @@ import { PayeesListComponent } from './payees-list.component';
 import { PayeesDaoService } from './payees-dao.service';
 import { PayeesFilterComponent } from './payees-filter.component';
 import { PayeeDetailComponent } from './payee-detail.component';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   declarations: [PayeesManagerComponent, PayeesListComponent, PayeesFilterComponent, PayeeDetailComponent],
   exports: [PayeesManagerComponent],
