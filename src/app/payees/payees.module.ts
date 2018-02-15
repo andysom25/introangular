@@ -6,6 +6,7 @@ import { PayeesManagerComponent } from './payees-manager.component';
 import { PayeesListComponent } from './payees-list.component';
 import { PayeesDaoService } from './payees-dao.service';
 import { PayeesFilterComponent } from './payees-filter.component';
+import { PayeeDetailComponent } from './payee-detail.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { PayeesFilterComponent } from './payees-filter.component';
     HttpClientModule,
     FormsModule
   ],
-  declarations: [PayeesManagerComponent, PayeesListComponent, PayeesFilterComponent],
+  declarations: [PayeesManagerComponent, PayeesListComponent, PayeesFilterComponent, PayeeDetailComponent],
   exports: [PayeesManagerComponent],
   providers: [PayeesDaoService]
 })
