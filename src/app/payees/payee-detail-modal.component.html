@@ -1,0 +1,11 @@
+<section>
+    <div class="modal-header bg-primary">
+    <div class="modal-title">{{ payee.payeeName }}</div>
+    </div>
+    <div class="modal-body">
+ <payee-detail [payee]="payee"></payee-detail>
+    </div>
+    <div class ="modal-footer">
+      <button class ="btn btn-warning" (click)="activeModal.close()">Close</button>
+    </div>
+   </section>

@@ -8,6 +8,7 @@ import { PayeesDaoService } from './payees-dao.service';
 import { PayeesFilterComponent } from './payees-filter.component';
 import { PayeeDetailComponent } from './payee-detail.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PayeeDetailModalComponent } from './payee-detail-modal.component';
 
 @NgModule({
   imports: [
@@ -16,10 +17,10 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgbModule
   ],
-  declarations: [PayeesManagerComponent, PayeesListComponent, PayeesFilterComponent, PayeeDetailComponent],
+  declarations: [PayeesManagerComponent, PayeesListComponent, PayeesFilterComponent, PayeeDetailComponent, PayeeDetailModalComponent],
   exports: [PayeesManagerComponent],
   providers: [PayeesDaoService],
-  entryComponents: [PayeeDetailComponent]
+  entryComponents: [[PayeeDetailModalComponent]]
 })
 export class PayeesModule { }
 

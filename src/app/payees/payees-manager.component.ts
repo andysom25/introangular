@@ -9,6 +9,7 @@ import _sortBy from 'lodash-es/sortBy';
 import ld_get from 'lodash-es/get';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PayeeDetailComponent } from './payee-detail.component';
+import { PayeeDetailModalComponent } from './payee-detail-modal.component';
 
 @Component({
   selector: 'payees-manager',
@@ -49,7 +50,8 @@ private modalService: NgbModal) { }
 
   handleSelectPayee(payee) {
   console.log('You selected', payee.payeeName);
-  this.modalService.open(PayeeDetailComponent);
+  const pdm = this.modalService.open(PayeeDetailModalComponent);
+  pdm.componentInstance.payee = payee;
   }
 
   handleSortPayee(sortField) {
