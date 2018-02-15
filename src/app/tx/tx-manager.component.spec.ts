@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TxManagerComponent } from './tx-manager.component';
 
 
-describe('TxManagerComponent', () => {
+xdescribe('TxManagerComponent', () => {
   let component: TxManagerComponent;
   let fixture: ComponentFixture<TxManagerComponent>;
 

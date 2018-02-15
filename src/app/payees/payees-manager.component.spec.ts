@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PayeesManagerComponent } from './payees-manager.component';
 
-describe('PayeesManagerComponent', () => {
+xdescribe('PayeesManagerComponent', () => {
   let component: PayeesManagerComponent;
   let fixture: ComponentFixture<PayeesManagerComponent>;
 
