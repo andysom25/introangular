@@ -1,8 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Transaction} from './Transaction';
-import { Observable } from 'rxjs/Observable';
-import { StorageService } from '../core/storage-service';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Transaction } from './Transaction';
 
 @Component({
   selector: 'tx-list',
@@ -10,29 +7,13 @@ import { StorageService } from '../core/storage-service';
   styles: []
 })
 export class TxListComponent implements OnInit {
-@Input()
 
-transactions: Transaction[];
-displaytx: Transaction[];
+  @Input()
+  tx: Transaction[];
 
-@Output()
-selecttx = new EventEmitter<Transaction>();
-
-  constructor(private storage: StorageService) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.transactions.subscribe(
-    //   transactions => this.displaytx = transactions,
-    //   err => {
-    //     console.log('Transaction List had an error: ', err);
-    //     this.displaytx = null;
-    //   }
-    // );
-  }
-
-  handleClick(payee) {
-    console.log('You clicked on', payee.payeeName);
-    this.selecttx.emit(payee);
   }
 
 }

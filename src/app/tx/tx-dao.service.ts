@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Transaction } from './Transaction';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class TxDaoService {
@@ -12,12 +9,14 @@ export class TxDaoService {
   params = new HttpParams();
 
   constructor(private http: HttpClient) {
-  this.params = this.params.set('_expand', 'payee');
+    this.params = this.params.set('_expand', 'payee');
   }
 
-  get() {}
+  get() { }
 
   list() {
-   return this.http.get<Transaction[]>(this.baseUrl, {params: this.params});
-    }
+    // return this.http.get<Transaction[]>(this.baseUrl, { params: this.params });
+    return this.http.get<Transaction[]>(this.baseUrl, { params: {'_expand': 'payee'} });
+  }
+
 }

@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Transaction } from './Transaction';
-import {TxDaoService } from './tx-dao.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
+import { TxDaoService } from './tx-dao.service';
 import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/retryWhen';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/observable/empty';
+import { Observable } from 'rxjs/Observable';
+import { TxFilterComponent } from './tx-filter.component';
+
 
 @Component({
   selector: 'tx-manager',
@@ -14,36 +16,32 @@ import 'rxjs/add/operator/delay';
 })
 export class TxManagerComponent implements OnInit {
 
-transactions: Transaction[];
-asyncTransactions: Observable<Transaction[]>;
+  transactions: Transaction[];
+  asyncTx: Observable<Transaction[]>;
+
+  @ViewChild('tx-filter')
+  child: TxFilterComponent;
 
   constructor(private dao: TxDaoService) { }
 
   ngOnInit() {
-//  this.dao.list()
-//  .subscribe(tx => this.transactions = tx);
+    this.asyncTx = this.dao.list()
+      .retryWhen(e => e.scan<number>((errorCount, error) => {
+        if (errorCount >= 10) {
+          throw error;
+        }
+        return errorCount + 1;
+      }, 0).delay(1000))
+      .catch(err => {
+        console.error('Error at ', Date.now());
+        return Observable.of([]);
+        // return err;
 
-this.dao.list()
-// .delay(100)
-// .catch((err, obs) => {
-// console.error('Error at ', Date.now());
-// return obs;
-// })
-.subscribe(tx => {
-  console.log('Subscribed at ', Date.now());
-  this.transactions = tx;
-});
+      });
+    // .subscribe(tx => {
+    //   console.log('Subscribed at ', Date.now());
+    //   this.transactions = tx;
+    // });
   }
 
-
-  handleSelectTx(transactions) {
-    console.log('You selected', transactions.payeeName);
-    }
-
-    handleError(err) {
-      console.log('TxManager.handleError()', err);
-
-    }
-
-  }
-
+}
