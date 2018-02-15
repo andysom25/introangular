@@ -1,8 +1,12 @@
 <h3>Payees Manager</h3>
-<section class ="row">
-    <div class ="col-4">
-        <payees-filter></payees-filter>
-    </div>
-    <div class="col-8"> <payees-list [payees]="payees"(sortPayee)= "handleSortPayee($event)"(selectPayee)="handleSelectPayee($event)"></payees-list>
-</div>
+<section class="row">
+  <div class="col-4">
+    <payees-filter
+    (filterPayees)="handleFilterPayees($event)"></payees-filter>
+  </div>
+  <div class="col-8">
+    <payees-list [payees]="payees"
+    (sortPayee)="handleSortPayee($event)"
+    (selectPayee)="handleSelectPayee($event)"></payees-list>
+  </div>
 </section>

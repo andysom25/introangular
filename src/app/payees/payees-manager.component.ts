@@ -6,6 +6,7 @@ import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import _sortBy from 'lodash-es/sortBy';
+import ld_get from 'lodash-es/get';
 
 @Component({
   selector: 'payees-manager',
@@ -16,6 +17,7 @@ export class PayeesManagerComponent implements OnInit {
 
 
 payees: Payee[];
+originalPayees: Payee[];
 asyncPayees: Observable<Payee[]>;
 sortField: string;
 
@@ -34,7 +36,12 @@ constructor(public dao: PayeesDaoService) { }
     //   return Observable.of([]);
     // });
     this.asyncPayees = this.dao.list();
-    this.asyncPayees.subscribe( payees => this.payees = payees);
+
+    this.asyncPayees = this.dao.list();
+    this.asyncPayees.subscribe( payees => {
+      this.payees = payees;
+      this.originalPayees = payees;
+    });
   }
 
   handleSelectPayee(payee) {
@@ -51,6 +58,23 @@ constructor(public dao: PayeesDaoService) { }
     }
     this.sortField = sortField;
   }
+
+  handleFilterPayees(criteria) {
+    console.log('Payees Manager filtering on ', criteria);
+    const criteriaKeys = Object.keys(criteria)
+    .filter(key => criteria[key]);
+
+      this.payees = this.originalPayees.filter(payee => criteriaKeys.every(
+        key => {
+          if (key !== 'category') {
+            return payee[key] && payee[key].includes(criteria[key]);
+          } else {
+            const value = ld_get(payee, 'category.categoryName');
+            return value ? value.includes(criteria[key]) : false;
+          }
+        }
+      ));
+    }
 
   handleError(err) {
     console.log('PayeesManager.handleError()', err);

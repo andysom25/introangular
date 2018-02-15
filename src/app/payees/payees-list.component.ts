@@ -21,6 +21,9 @@ export class PayeesListComponent implements OnInit {
   @Output()
   sortPayee = new EventEmitter<string>();
 
+  @Output()
+  filterPayee = new EventEmitter();
+
   constructor(private storage: StorageService) { }
 
   ngOnInit() {
