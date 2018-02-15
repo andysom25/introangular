@@ -18,7 +18,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [PayeesManagerComponent, PayeesListComponent, PayeesFilterComponent, PayeeDetailComponent],
   exports: [PayeesManagerComponent],
-  providers: [PayeesDaoService]
+  providers: [PayeesDaoService],
+  entryComponents: [PayeeDetailComponent]
 })
 export class PayeesModule { }
 

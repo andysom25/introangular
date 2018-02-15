@@ -7,6 +7,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import _sortBy from 'lodash-es/sortBy';
 import ld_get from 'lodash-es/get';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PayeeDetailComponent } from './payee-detail.component';
 
 @Component({
   selector: 'payees-manager',
@@ -21,7 +23,8 @@ originalPayees: Payee[];
 asyncPayees: Observable<Payee[]>;
 sortField: string;
 
-constructor(public dao: PayeesDaoService) { }
+constructor(public dao: PayeesDaoService,
+private modalService: NgbModal) { }
 
   ngOnInit() {
     // this.dao.list()
@@ -46,6 +49,7 @@ constructor(public dao: PayeesDaoService) { }
 
   handleSelectPayee(payee) {
   console.log('You selected', payee.payeeName);
+  this.modalService.open(PayeeDetailComponent);
   }
 
   handleSortPayee(sortField) {
