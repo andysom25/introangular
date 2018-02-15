@@ -60,7 +60,7 @@ constructor(public dao: PayeesDaoService) { }
   }
 
   handleFilterPayees(criteria) {
-    console.log('Payees Manager filtering on ', criteria);
+    // console.log('Payees Manager filtering on ', criteria);
     const criteriaKeys = Object.keys(criteria)
     .filter(key => criteria[key]);
 
