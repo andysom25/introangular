@@ -8,11 +8,14 @@ import { TxModule } from './tx/tx.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PeopleModule } from './people/people.module';
+import { AppRoutingModule } from './app-routing-module';
+import { DefaultViewComponent } from './default-view.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, WKBannerComponent, WkGenBannerComponent
+    AppComponent, WKBannerComponent, WkGenBannerComponent, DefaultViewComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PayeesModule,
     TxModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    PeopleModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

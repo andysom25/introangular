@@ -13,19 +13,33 @@
   <div class="col">
     <nav>
       <ul class="list-inline">
-        <li [ngClass]="pickButtonColor('payees')" class="btn list-inline-item" (click)="handleViewSwitch('payees')">Payees</li>
-        <li [ngClass]="pickButtonColor('tx')" class ="btn btn-primary list-inline-item" (click)="handleViewSwitch('tx')">Transactions</li >
+          <li class ="list-inline-item"><a  class = "btn btn-primary" 
+            [routerLink]="['']"
+             routerLinkActive="btn-danger" [routerLinkActiveOptions]="{exact: true}">Home</a></li >
+        <li [ngClass]="pickButtonColor('payees')" class="list-inline-item"><a class ="btn btn-primary text-light"
+           [routerLink]="['/payees']"
+           routerLinkActive="btn-danger">Payees</a></li>
+        <li [ngClass]="pickButtonColor('tx')" class ="list-inline-item"><a  class = "btn btn-primary" 
+          [routerLink]="['tx']"
+           routerLinkActive="btn-danger">Transactions</a></li >
       </ul>
     </nav>
   </div>
 </div>
 
-<section class ="row">
+<!-- <section class ="row">
   <div class="row">
     <div class="col">
       <payees-manager *ngIf='views.payees'></payees-manager>
       <tx-manager *ngIf='views.tx'></tx-manager>
     </div>
   </div>
+</section> -->
+
+<section class="row">
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
 </section>
+
 </main>
