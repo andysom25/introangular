@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { PayeesManagerComponent } from './payees-manager.component';
-import { PayeesListComponent } from './payees-list.component';
+import { PayeesListComponent } from './payees-list-standalone.component';
 import { PayeesDaoService } from './payees-dao.service';
 import { PayeesFilterComponent } from './payees-filter.component';
 import { PayeeDetailComponent } from './payee-detail.component';
