@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PayeesSearchComponent } from './payees-search.component';
-import { PayeesListComponent } from './payees-list.component';
+import { PayeesListComponent } from './payees-list-standalone.component';
 import { PayeeDetailComponent } from './payee-detail.component';
 import { PayeesManagerComponent } from './payees-manager.component';
 import { PayeesDataResolverService } from './payees-data-resolver.service';
