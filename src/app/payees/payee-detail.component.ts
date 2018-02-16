@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Payee } from './Payee';
 
 @Component({
@@ -9,8 +8,8 @@ import { Payee } from './Payee';
 })
 export class PayeeDetailComponent implements OnInit {
 
-@Input()
-payee: Payee;
+  @Input()
+  payee: Payee;
 
   constructor() { }
 

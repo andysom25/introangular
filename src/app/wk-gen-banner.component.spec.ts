@@ -6,18 +6,18 @@ describe('WkGenBannerComponent', () => {
   let component: WkGenBannerComponent;
   let fixture: ComponentFixture<WkGenBannerComponent>;
   let spy: any;
-  const fakenow = 15000000;
+  const fakeNow = 1500000000000;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WkGenBannerComponent ]
+      declarations: [WkGenBannerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     spy = spyOn(Date, 'now');
-    spy.and.returnValue(fakenow);
+    spy.and.returnValue(fakeNow);
     fixture = TestBed.createComponent(WkGenBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -27,30 +27,35 @@ describe('WkGenBannerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should us the fake now', () => {
-    expect(component.today).toEqual(fakenow);
+  it('should use the fake now', () => {
+    expect(component.today).toEqual(fakeNow);
+    console.log('Width: ', fixture.nativeElement.style);
   });
 
-it('should display the default company with no arguments', () => {
-  expect(component.companyName).toEqual('Default Company');
-  expect(component.companyName).toBeTruthy();
-  expect(fixture.nativeElement.innerHTML).toContain('Default Company');
-  expect(fixture.nativeElement.querySelector('h3').innerHTML).toMatch(/Default Company/);
-  expect(fixture.nativeElement.querySelector('*:not(h3)').innerHTML).not.toMatch(/Default Company/);
+  it('should display the default company with no arguments', () => {
+    expect(component.companyName).toEqual('Default Company');
+    expect(component.companyName).toBeTruthy();
+
+    expect(fixture.nativeElement.innerHTML).toContain('Default Company');
+    expect(fixture.nativeElement.querySelector('h3').innerHTML)
+      .toMatch(/Default Company/);
+    expect(fixture.nativeElement.querySelector('*:not(h3)').innerHTML)
+      .not
+      .toMatch(/Default Company/);
+  });
+
+  it('should reflect changes', () => {
+    const defaultCompany = component.companyName;
+    const newCompany = 'Wolters Kluwer';
+
+    expect(fixture.nativeElement.querySelector('h3').innerHTML)
+      .toContain(defaultCompany);
+
+    component.companyName = newCompany;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('h3').innerHTML)
+      .toContain(newCompany);
+
+
+  });
 });
-
-it('should reflect changes', () => {
-
-const defaultCompany = component.companyName;
-const newCompany = 'Wolters Kluwer';
-
-expect(fixture.nativeElement.querySelector('h3').innerHTML).toContain(defaultCompany);
-
-component.companyName = newCompany;
-fixture.detectChanges();
-expect(fixture.nativeElement.querySelector('h3').innerHTML).toContain(newCompany);
-
-});
-
-});
-

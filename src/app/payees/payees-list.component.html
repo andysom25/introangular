@@ -1,4 +1,4 @@
-<table class ="table table-striped">
+<table class="table table-striped">
   <thead>
     <tr>
       <th class="clickable" (click)="handleSort('payeeName')">Payee Name</th>
@@ -8,9 +8,8 @@
     </tr>
   </thead>
   <tbody *ngIf="payees; else errorBlock">
-    <tr *ngFor="let payee of payees"
-    (click)="handleClick(payee)">
-      <td>{{ payee.payeeName}}</td>
+    <tr *ngFor="let payee of payees" (click)="handleClick(payee)">
+      <td>{{ payee.payeeName }}</td>
       <td>{{ payee.city }}</td>
       <td>{{ payee.state }}</td>
       <td>{{ payee.category.categoryName }}</td>
@@ -19,11 +18,9 @@
 </table>
 
 <ng-template #errorBlock>
-<tbody>
-  <tr>
-    <td colspan="4">No Records Found</td>
-  </tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td colspan="4">No records found</td>
+    </tr>
+  </tbody>
 </ng-template>
-
-<!-- "let payee of payees | async" -->

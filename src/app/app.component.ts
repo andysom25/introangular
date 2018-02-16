@@ -8,11 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   company = 'The Boring Corporation';
 
-views = {
-tx: false,
-payees: false
-
-};
+  views = {
+    tx: false,
+    payees: false
+  };
 
   handleViewSwitch(viewName) {
     for (const view in this.views) {
@@ -23,6 +22,5 @@ payees: false
 
   pickButtonColor(viewName) {
     return this.views[viewName] ? 'btn-primary' : 'btn-danger' ;
-
   }
 }

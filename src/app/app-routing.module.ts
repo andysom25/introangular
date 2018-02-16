@@ -7,7 +7,7 @@ import { DefaultViewComponent } from './default-view.component';
 const routes: Routes = [
   { path: 'tx', component: TxManagerComponent },
   { path: 'home', component: DefaultViewComponent },
-  { path: '', component: DefaultViewComponent},
+  // { path: '', component: DefaultViewComponent},
   // { path: '', redirectTo: '/home' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/tx' }

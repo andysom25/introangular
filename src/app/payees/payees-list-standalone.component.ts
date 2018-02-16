@@ -19,9 +19,13 @@ export class PayeesListComponent implements OnInit {
 
   @Output() sortPayee = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: { payees: Payee[] }) => {
+      this.payees = data.payees;
+    });
+
     // this.payees.subscribe(
     //   payees => this.displayPayees = payees,
     //   err => {

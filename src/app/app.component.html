@@ -1,45 +1,50 @@
-<main class='container'>
+<main class="container">
 
-<header class="row">
+  <header class="row">
+    <div class="col">
+      <h1>Hello world!</h1>
+      <wk-gen-banner companyName="Wolters Kluwer"></wk-gen-banner>
+    </div>
+  </header>
+
   <div class="row">
     <div class="col">
-      <h1>Hello World</h1>
-      <app-wk-gen-banner companyName="Wolters Kluwer"></app-wk-gen-banner>
+      <nav>
+        <!--         <button class="btn btn-primary" (click)="handleViewSwitch('payees')">Payees</button>
+        <button class="btn btn-warning" (click)="handleViewSwitch('tx')">Transactions</button>
+ -->
+        <ul class="list-inline">
+          <li class="list-inline-item">
+              <a class="btn btn-primary"
+                 routerLink=""
+                 routerLinkActive="btn-danger"
+                 [routerLinkActiveOptions]="{exact: true}">Home</a>
+            </li>
+            <li class="list-inline-item">
+            <a class="btn btn-primary text-light"
+               [routerLink]="['/payees']"
+               routerLinkActive="btn-danger">Payees</a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-primary"
+               routerLink="/tx"
+               routerLinkActive="btn-danger">Transactions</a>
+          </li>
+          </ul>
+      </nav>
     </div>
   </div>
-</header>
 
-<div class="row">
-  <div class="col">
-    <nav>
-      <ul class="list-inline">
-          <li class ="list-inline-item"><a  class = "btn btn-primary" 
-            [routerLink]="['']"
-             routerLinkActive="btn-danger" [routerLinkActiveOptions]="{exact: true}">Home</a></li >
-        <li [ngClass]="pickButtonColor('payees')" class="list-inline-item"><a class ="btn btn-primary text-light"
-           [routerLink]="['/payees']"
-           routerLinkActive="btn-danger">Payees</a></li>
-        <li [ngClass]="pickButtonColor('tx')" class ="list-inline-item"><a  class = "btn btn-primary" 
-          [routerLink]="['tx']"
-           routerLinkActive="btn-danger">Transactions</a></li >
-      </ul>
-    </nav>
-  </div>
-</div>
-
-<!-- <section class ="row">
-  <div class="row">
+  <section class="row">
     <div class="col">
-      <payees-manager *ngIf='views.payees'></payees-manager>
-      <tx-manager *ngIf='views.tx'></tx-manager>
+      <router-outlet></router-outlet>
     </div>
-  </div>
-</section> -->
+  </section>
 
-<section class="row">
-  <div class="col">
-    <router-outlet></router-outlet>
-  </div>
-</section>
-
+  <!-- <section class="row">
+    <div class="col">
+      <payees-manager *ngIf="views.payees"></payees-manager>
+      <tx-manager *ngIf="views.tx"></tx-manager>
+    </div>
+  </section> -->
 </main>

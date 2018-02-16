@@ -1,6 +1,13 @@
 <h3>Payees Manager</h3>
 <section class="row">
-  <div class="col-4">
+  <div class="col">
+    <ul class="list-inline">
+      <li class="list-inline-item"><a routerLink="search">Search</a></li>
+      <li class="list-inline-item"><a routerLink="list">List</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <div class="col-4">
     <payees-filter
     (filterPayees)="handleFilterPayees($event)"></payees-filter>
   </div>
@@ -8,5 +15,5 @@
     <payees-list [payees]="payees"
     (sortPayee)="handleSortPayee($event)"
     (selectPayee)="handleSelectPayee($event)"></payees-list>
-  </div>
+  </div> -->
 </section>
